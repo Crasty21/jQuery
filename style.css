@@ -1,0 +1,17 @@
+body.dark {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark table {
+    color: white;
+}
+
+.note-hover {
+    background-color: #f2f2f2;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
