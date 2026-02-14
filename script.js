@@ -1,11 +1,9 @@
 $(document).ready(function () {
 
-    // Datepicker
     $("#date").datepicker({
         dateFormat: "dd.mm.yy"
     });
 
-    // Inicjalizacja DataTables
     var table = $("#notesTable").DataTable({
         language: {
             search: "Szukaj:",
@@ -18,17 +16,14 @@ $(document).ready(function () {
         }
     });
 
-    // Licznik znaków
     $("#content").on("keyup", function () {
         $("#charCount").text("Liczba znaków: " + $(this).val().length);
     });
 
-    // Tryb ciemny
     $("#darkModeBtn").click(function () {
         $("body").toggleClass("dark");
     });
 
-    // WALIDACJA
     $("#noteForm").validate({
         rules: {
             title: {
@@ -51,7 +46,6 @@ $(document).ready(function () {
             var content = $("#content").val();
             var date = $("#date").val();
 
-            // Dodanie do DataTables (TO MUSI BYĆ TAK)
             table.row.add([
                 title,
                 content,
@@ -59,7 +53,6 @@ $(document).ready(function () {
                 "<button class='btn btn-danger deleteBtn'>Usuń</button>"
             ]).draw(true);
 
-            // Efekt animacji
             $("#notesTable").hide().fadeIn(400);
 
             form.reset();
@@ -69,14 +62,12 @@ $(document).ready(function () {
         }
     });
 
-    // Usuwanie (delegacja zdarzeń)
     $("#notesTable tbody").on("click", ".deleteBtn", function () {
         table.row($(this).closest("tr")).remove().draw();
 
         $("#notesTable").slideUp(200).slideDown(200);
     });
 
-    // Hover efekt
     $("#notesTable tbody").on("mouseenter", "tr", function () {
         $(this).addClass("note-hover");
     });
@@ -86,3 +77,4 @@ $(document).ready(function () {
     });
 
 });
+
